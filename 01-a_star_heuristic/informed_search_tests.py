@@ -13,7 +13,7 @@ def informed_search_test(graph, heuristic, origin, destination, distance):
     distance -- the expected length of a shortest path
     """
     (length,visited) = informed_search(graph, heuristic, origin, destination)
-    print("Distance {} and heuristic {} of origin and destination and the number of visited vertices {}".format(distance, heuristic(origin,destination), visited))
+    print("Distance between an origin and a destination is {} and heuristic is {}. Number of visited vertices is {}.".format(distance, heuristic(origin,destination), visited))
     assert length == distance, "A* did not found a shortest path"
 
 def grid_2D_tests():
