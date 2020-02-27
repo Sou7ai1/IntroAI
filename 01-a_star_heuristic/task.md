@@ -1,4 +1,4 @@
-Implementujte monotónní heurestiky pro A* algoritmus spuštěný na podgrafy následujících nekonečných mřížek.
+Implementujte monotónní heuristiky pro A* algoritmus spuštěný na podgrafy následujících nekonečných mřížek.
 
 * *Grid2D*: Klasická dvourozměrná mřížka
 * *Grid3D*: Klasická třírozměrná mřížka
@@ -18,7 +18,7 @@ Rada na závěr: Znáte příkaz "ulimit -v"?
 
 ====================================================================================================
 
-Implement monotone heurestics for the A* algorithm running on subgraphs of the following infinite grids.
+Implement monotone heuristics for the A* algorithm running on subgraphs of the following infinite grids.
 
 * Grid2D: The classic two-dimensional grid
 * Grid3D: The classic three-dimensional grid
@@ -29,7 +29,7 @@ Implement monotone heurestics for the A* algorithm running on subgraphs of the f
 
 A subgraph is given by an oracle that decides whether an edge of the grid is presented or removed from the subgraph.
 
-Download the git repository https://gitlab.mff.cuni.cz/finkj1am/introai.git and implement all functions in heuristics.py. Submit only the heuristics.py file to ReCodex. You can also edit other files while debugging, but keep in mind that recodex will not take these changes into account.
+Download the git repository https://gitlab.mff.cuni.cz/finkj1am/introai.git and implement all functions in heuristics.py. Submit only the heuristics.py file to ReCodex. Please, do not change the name of the file when submitting. You can also edit other files while debugging, but keep in mind that recodex will not take these changes into account.
 
 Recodex tests are the same as in the file informed_search_tests.py. The expected heuristics visit at million vertices in each test, and inefficient heuristics fails to find the shortest path within time limit set in ReCodex. All tests should run between 1 and 3 minutes depending on speed of a computer.
 
