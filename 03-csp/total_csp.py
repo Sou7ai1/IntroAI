@@ -1,3 +1,4 @@
+# Install package python-constraint, not constraint !!!
 import constraint
 
 def total_coloring(graph):

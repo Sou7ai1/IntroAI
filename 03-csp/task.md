@@ -8,6 +8,7 @@ V souboru total_csp.py implementujte funkci total_coloring. Do ReCodexu odevzdá
 
 Tuto úlohu je možné řešit mnoha způsoby (například SAT, lineární programování a backtracking), ale cílem úlohy je vyzkoušet si Constraint satisfaction programming na jednoduché úloze. K řešení úlohy proto použijte knihovnu python-constraint (https://pypi.org/project/python-constraint/). Graf je zadaný pomocí knihovny networkx (https://pypi.org/project/networkx/), takže dalším cílem je naučit se číst dokumentaci.
 
+Zdůrazňuji, že si máte nainstalovat knihovnu *python-constraint* a nezkoušeli instalovat knihovnu *constraint* !
 
 =======================================================
 
@@ -19,3 +20,4 @@ The total chromatic number of a graph is the minimum number of colors required f
 
 This task can be solved using many methods (e.g. SAT, Linear Programming and backtracking), but the goal of this assignment is to practice using contraint satisfaction programming solvers on a simple problem. Therefore, you are expected to used the library python-constraint (https://pypi.org/project/python-constraint/). A graph is given using the library networkx (https://pypi.org/project/networkx/), so a part of the assignment is reading the documentation of mentioned libraries.
 
+Please, install the package *python-constraint*. Do not try to install package called *constraint* !!!
