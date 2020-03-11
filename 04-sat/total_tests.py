@@ -2,7 +2,7 @@
 
 import networkx
 import sys
-import total_csp as student_solver
+import total_sat as student_solver
 
 def verify_total_coloring(graph_original, graph_student, expected_colors, colors):
     if not isinstance(colors, int):
@@ -91,7 +91,7 @@ if __name__ == "__main__":
     }
     if len(sys.argv) == 1:
         for name in tests:
-            print("Running tests", name)
+            print("Running test", name)
             if tests[name]():
                 print("Passed.")
             else:
