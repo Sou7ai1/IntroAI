@@ -29,7 +29,7 @@ def call_heuristic(heuristic, current, destination):
     return h
 
 def informed_search(graph, heuristic, origin_coord, destination_coord):
-    """ 
+    """
     A* algorithm finding a shortest path between two given coordinates using a given heuristic function.
     Return a pair of integers containing the length of a shortest path and the number of vertices visited during the algorithm.
     Fails if no path exists.

@@ -10,7 +10,7 @@ class Grid:
         directions -- list of all neighbours of the origin
         """
 
-        self.salt = salt
+        self.salt = salt * 6487304627
         self.probability = probability
         self.directions = directions + list( tuple(-x for x in d) for d in directions )
 
@@ -21,11 +21,11 @@ class Grid:
         if v < u:
             u,v = v,u
         prime = 2147483647
-        acc = (self.salt * 4378431) % prime
+        acc = prime//2
         for x in [u,v]:
             for y in x:
-                acc = (acc * y + self.salt) % prime
-        return acc < prime * self.probability
+                acc = (acc * self.salt + y) % prime
+        return abs(acc)  < self.probability * prime
 
     def neighbours(self, vertex):
         """ Return a list of all neighbours of a given vertex. """

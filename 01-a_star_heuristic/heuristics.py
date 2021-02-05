@@ -4,6 +4,8 @@
 # Each argument is a tuple of two or three integer coordinates.
 # See file task.md for description of all grids.
 
+import math
+
 def grid_2D_heuristic(current, destination):
     return 0
 
