@@ -74,15 +74,23 @@ def small_graph_tests():
 def large_graph_tests():
     if not total_coloring_test("Complete graph on 7 vertices", networkx.complete_graph(7), 7):
         return False
-    if not total_coloring_test("Cycle of length 100", networkx.cycle_graph(100), 4):
+    if not total_coloring_test("Cycle of length 14", networkx.cycle_graph(14), 4):
         return False
     if not total_coloring_test("Star graph on 200 vertices", networkx.star_graph(200), 201):
         return False
     if not total_coloring_test("Complete bipartite graph on 4+4 vertices", networkx.complete_multipartite_graph(4,4), 6):
         return False
-    if not total_coloring_test("Hypercube of dimension 5", networkx.hypercube_graph(5), 6):
+    if not total_coloring_test("Hypercube of dimension 3", networkx.hypercube_graph(3), 4):
         return False
     return True
+
+"""
+To run all tests, run the command
+$ python3 total_tests.py
+
+To run a test NAME, run the command
+$ python3 total_tests.py NAME
+"""
 
 if __name__ == "__main__":
     tests = {
