@@ -154,11 +154,12 @@ def run_problem(domain_file, name):
             logging.info("Passed.")
             return True
     else:
-        if not feasible:
+        if not solution:
             logging.info("Passed.")
             return True
         else:
             logging.error("Problem {} is infeasible".format(name))
+            verify_plan(problem, solution)
             return False
 
 def usage(str):
