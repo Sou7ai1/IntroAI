@@ -80,7 +80,7 @@ class Player:
                         for neigh in self.neighbors[pos]:
                             if self.game[neigh] == UNKNOWN:
                                 return neigh
-                        assert(False) # There has to be at one unexlored neighbor.
+                        assert(False) # There has to be at least one unexplored neighbor.
 
         if not RUN_TESTS:
             return None
