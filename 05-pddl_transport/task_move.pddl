@@ -1,4 +1,4 @@
-;; Test load action
+;; Move a car from place1 to place2
 (define (problem transport)
     (:domain transport)
     (:objects car1 place1 place2 box1 box2)

@@ -1,4 +1,4 @@
-;; Test move box1 from place1 to place2 and box2 from place2 to place1
+;; Move three boxes without overloading a car
 (define (problem transport)
     (:domain transport)
     (:objects car1 place1 place2 box1 box2 box3)
