@@ -15,6 +15,7 @@ class Player:
         self.neighbors = get_neighbors(rows, columns)
 
         # Matrix of numbers of missing mines in the neighborhood of every cell.
+        # -1 if a cell is unexplored.
         self.mines = numpy.full(rows*columns, -1).reshape((rows, columns))
 
         # Matrix of the numbers of unexplored neighborhood cells, excluding known mines.
@@ -31,7 +32,6 @@ class Player:
         pos = self.preprocessing()
         if not pos:
             pos = self.trivial_player()
-
         self.invalidate_with_neighbors(pos)
         return pos
 
@@ -47,6 +47,12 @@ class Player:
         self.invalid.add(pos)
         for neigh in self.neighbors[pos]:
             self.invalid.add(neigh)
+
+    def preprocess_all(self):
+        # Preprocess all cells
+        self.invalid = set((i,j) for i in range(self.rows) for j in range(self.columns))
+        pos = self.preprocessing()
+        assert(pos == None) # Preprocessing is incomplete
 
     def preprocessing(self):
         """
@@ -92,4 +98,18 @@ class Player:
                 assert(self.unknown[i,j] == sum(1 if self.game[neigh] == UNKNOWN else 0 for neigh in self.neighbors[i,j]))
                 if self.game[i,j] >= 0:
                     assert(self.mines[i,j] == self.game[i,j] - sum(1 if self.game[neigh] == MINE else 0 for neigh in self.neighbors[i,j]))
+
+    def get_each_mine_probability(self):
+        # Returns a matrix of probabilities of a mine of each cell
+        probability = numpy.zeros((self.rows,self.columns))
+        for i in range(self.rows):
+            for j in range(self.columns):
+                if self.game[i,j] == MINE:
+                    probability[i,j] = 1
+
+        # TODO: Finish this calculations
+        # Implementing this function is not obligatory but it may help to fulfill the homework.
+        # This function is tested by the file probability_test.py.
+
+        return probability
 

@@ -5,3 +5,5 @@ File minesweeper_player.py contains a trivial player and your task is to improve
 You can use and combine every knowledge from our course, i.e. informed search, logic and probabilistic reasoning. However, you are expected to explain you approach, so write comments in your code. Teachers will reduce the number points for unclear code.
 
 In order to receive points from a test, your program has to terminate in 12 minutes (on recodex). Teacher's program requires at most 1.3 seconds for each test.
+
+File probability_test.py contains tests to verify the correctness of calculating the probability of a mine on each cell. These tests are not included in recodex, so their passing is voluntary. Nevertheless, they may be helpful to fulfill this assignment. 

@@ -71,11 +71,11 @@ def main():
     # Two numbers in comments are numbers win games of the trivial and teacher's player.
     # Extra challenge is to surpass you teacher.
     tests = {
-        "first": (5, 7, 0.2, 4, 100, [31,37]), # 28, 39
+        "first": (5, 7, 0.2, 4, 100, [31,39]), # 28, 42
         "second": (9, 8, 0.1, 6, 100, [70,76]), # 63, 80
-        "third": (12, 15, 0.15, 42, 100, [55,67]), # 42, 70
-        "fourth": (15, 18, 0.16, 123, 50, [21,27]), # 17, 29
-        "fifth": (30, 25, 0.12, 4125432, 30, [19,25]), # 16, 26
+        "third": (12, 15, 0.15, 42, 100, [55,68]), # 42, 72
+        "fourth": (15, 18, 0.16, 123, 50, [21,30]), # 17, 33
+        "fifth": (30, 25, 0.12, 4125432, 30, [19,24]), # 16, 26
         }
     if len(sys.argv) == 1:
         for name in tests:
