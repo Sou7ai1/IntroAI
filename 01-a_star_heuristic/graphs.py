@@ -15,9 +15,11 @@ class Grid:
         self.directions = directions + list( tuple(-x for x in d) for d in directions )
 
     def oracle(self, u, v):
-        """ Return a list of all neighbours of a given vertex. """
-        if not tuple(a-b for (a,b) in zip(u,v)) in self.directions:
-            return False
+        """
+            Determine whether a given two vertices are connected by an edge in a subgraph.
+            Vertices must be adjacent in whole grid which is not tested since it is slow.
+        """
+#        assert tuple(a-b for (a,b) in zip(u,v)) in self.directions
         if v < u:
             u,v = v,u
         prime = 2147483647
@@ -25,12 +27,12 @@ class Grid:
         for x in [u,v]:
             for y in x:
                 acc = (acc * self.salt + y) % prime
-        return abs(acc)  < self.probability * prime
+        return abs(acc) < self.probability * prime
 
     def neighbours(self, vertex):
         """ Return a list of all neighbours of a given vertex. """
         grid_neighbours = [ tuple(a+b for (a,b) in zip(vertex,d)) for d in self.directions ]
-        return list( u for u in grid_neighbours if self.oracle(vertex,u) )
+        return [ u for u in grid_neighbours if self.oracle(vertex,u) ]
 
 # All grids follows.
 # See file task.md for description of all grids.
