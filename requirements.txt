@@ -2,3 +2,4 @@ prettytable==3.1.1
 wcwidth==0.2.5
 networkx==2.6.3
 python-constraint==1.4.0
+python-sat==0.1.7
