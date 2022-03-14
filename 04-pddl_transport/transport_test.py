@@ -6,11 +6,10 @@ import os
 import time
 from time import time
 from prettytable import PrettyTable
-import search
-import pyperplan
-from pddl.parser import Parser
+from pyperplan import search, planner
+from pyperplan.pddl.parser import Parser
 
-# Source: https://github.com/aibasel/pyperplan, modified to testing purposes.
+# Source: https://github.com/aibasel/pyperplan, modified for testing purposes.
 def pyperplan_solver(problem_file, domain_file):
     search_algorithm = search.breadth_first_search
     heuristic = None
@@ -26,10 +25,8 @@ def pyperplan_solver(problem_file, domain_file):
     logging.info("{} Objects parsed".format(len(problem.objects)))
     logging.info("{} Constants parsed".format(len(domain.constants)))
 
-    task = pyperplan._ground(problem)
-#    search_start_time = time.process_time()
-    solution = pyperplan._search(task, search_algorithm, heuristic)
-#    logging.info("Search time: {:.2}".format(time.process_time() - search_start_time))
+    task = planner._ground(problem)
+    solution = planner._search(task, search_algorithm, heuristic)
 
     if solution is None:
         logging.warning("No solution could be found")
@@ -199,10 +196,10 @@ def main():
 
 """
 To run all tests, run the command
-$ python3 total_tests.py
+$ python3 transport_tests.py
 
 To run a test NAME, run the command
-$ python3 total_tests.py NAME
+$ python3 transport_tests.py NAME
 """
 if __name__ == "__main__":
     main()
