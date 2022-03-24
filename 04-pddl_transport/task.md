@@ -2,7 +2,7 @@ Using Planning Domain Definition Language [PDDL](https://en.wikipedia.org/wiki/P
 
 A logistic company needs to create a plan for transporting goods packed in boxes by cars located in various places.
 The initial and the goal positions are given in problem definition files.
-Note that the capacity of every can is one box and boxes can be transported only by car (i.e. no teleportation).
+Note that the capacity of every car is one box and boxes can be transported only by car (i.e. no teleportation).
 
 Your task is to write the domain definition file for this task containing the following commands with arguments in the given order.
 * *load(box car place)*: Load a box into a car, both located the given place.
