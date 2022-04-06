@@ -29,9 +29,9 @@ Homework for the course Introduction to Artificial Intelligence
 * Before deadline, you can re-submit.
 * The number of points depends on tests you pass.
 * Quality of your code and reports contributes to grading.
-* You can use only the library that are already included in templates (git).
 * Do not use code you didn't write yourself.
 * Your program must work on every input. Although tests are available, it is forbidden to precompute any results for these tests.
+* You can use only [the standard library](https://docs.python.org/3/library/) and libraries listed in [requirements.txt](https://gitlab.mff.cuni.cz/finkj1am/introai/-/blob/master/requirements.txt).
 * Cite all sources you used to fulfill given tasks.
 * Missing citations and plagiarism will be reported to [Disciplinary Board](https://www.mff.cuni.cz/en/faculty/organizational-structure/department?code=4).
 
