@@ -4,3 +4,5 @@ networkx==2.6.3
 python-constraint==1.4.0
 python-sat>=0.1.7dev16
 pyperplan==2.1
+numpy==1.21.5
+scipy==1.6.3
