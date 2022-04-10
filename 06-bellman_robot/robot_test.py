@@ -101,14 +101,14 @@ def run_tests(rows, columns, forward_probability, alpha, seed, landings, win_poi
         In order to generate mines, their probability and seed generator is given.
         win_points is an array of numbers of games needed to win to get one point.
     """
-    print("Test contains", landings, "landing on an area of size", rows, "*", columns, ".")
+    print("Test contains", landings, "landings on an area of size", rows, "*", columns)
     rng = numpy.random.default_rng(seed)
     origins = [ numpy.array([rng.integers(1, rows-1), rng.integers(1, columns-1)]) for _ in range(landings) ]
     env = Environment(rows=rows, columns=columns, forward_probability=forward_probability, alpha=alpha, rng=rng)
     control = RobotControl(copy.deepcopy(env))
     successful = 0
     for origin in origins:
-        if single_landing(env, control, origin, numpy.random.default_rng(rng.integers(numpy.iinfo(int).max))):
+        if single_landing(env, control, origin, numpy.random.default_rng(rng.integers(numpy.iinfo(numpy.int64).max))):
             successful += 1
     points = sum(1 if successful >= p else 0 for p in win_points)
     print(landings, "robots landed and", successful, "successfully reached the destination. You will receive", points, "points assuming time and memory limits are satisfied.")
@@ -126,7 +126,7 @@ def numpy_random_generation_test():
     assert [rng.integers(1000000) for _ in range(5)] == [526478, 975622, 735752, 761139, 717477]
     assert [rng.beta(1, 3) for _ in range(5)] == [0.05014086883548152, 0.2817671069441921, 0.4516645021220816, 0.0672174548533563, 0.42291529387311344]
     assert [rng.random() for _ in range(5)] == [0.8931211213221977, 0.7783834970737619, 0.19463870785196757, 0.4667210037270342, 0.04380376578722878]
-    rng = numpy.random.default_rng(rng.integers(numpy.iinfo(int).max))
+    rng = numpy.random.default_rng(rng.integers(numpy.iinfo(numpy.int64).max))
     assert [rng.random() for _ in range(5)] == [0.9722232784934238, 0.11981033678856667, 0.6507573893950737, 0.9434296766405612, 0.04959891689064433]
 
 def main():
