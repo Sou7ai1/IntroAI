@@ -44,5 +44,8 @@ Therefore, it is recommended to calculate the maximal probability of reaching th
 These tests are evaluated by 0 points on recodex, so their passing is voluntary.
 Nevertheless, they may be helpful to fulfill this assignment.
 
+* It may be easier to first implement value update but this method usually leads to 8 points since it is too slow for the fifth test.
+To make the computation faster, you can try some tricks or policy update.
+
 * Python package scipy may be useful to solve the task.
 Especially, [a sparse matrix](https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csc_matrix.html) and [a linear system solver](https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.linalg.spsolve.html) may be handy.
