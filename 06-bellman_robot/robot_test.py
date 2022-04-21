@@ -67,6 +67,11 @@ class Environment:
     def get_danger(self, position):
         return 1 - self.safety_map[tuple(position)]
 
+    # Return position which the robot reaches when it make one step from origin position by a given command and rotation.
+    # Both origin and returned positions are numpy arrays.
+    def get_position_after_action(self, origin, command, rotation):
+        return origin + self.DIRECTION[(command+rotation)%4]
+
 # Simulates one landing and returns True if the robot successfully reached the station from a given landing position (origin).
 def single_landing(env, control, origin, rng):
     current = origin # Robot's current position
@@ -86,8 +91,7 @@ def single_landing(env, control, origin, rng):
         else:
             rotation = env.RIGHT
 
-        direction = env.DIRECTION[env.ROTATION[command,rotation]] # Actual direction of robot's movement
-        current += direction
+        current = env.get_position_after_action(current, command, rotation)
 
         # Test whether our robot successfully entered new position
         if rng.random() > env.safety_map[tuple(current)]:
