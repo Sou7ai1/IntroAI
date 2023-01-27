@@ -46,7 +46,7 @@ def informed_search(graph, heuristic, origin_coord, destination_coord):
 
     # A heap of vertices.
     # Since all tested graph has very small degree, decreasing priority would be inefficient.
-    # Therefore, a single vertex may have multiple occurences in the heap.
+    # Therefore, a single vertex may have multiple occurrences in the heap.
     queue = []
     heapq.heappush(queue, (origin.distance+origin.heuristic,origin))
 
@@ -84,7 +84,7 @@ def informed_search(graph, heuristic, origin_coord, destination_coord):
                     if visit.distance > distance:
                         assert not visit.explored, "The distance of explored vertices cannot be decreased if the heuristic is monotonic"
                         # The priority in the queue should be decreased
-                        # but finding the vertex in the queue or updating its position would not be more efficent.
+                        # but finding the vertex in the queue or updating its position would not be more efficient.
                         visit.distance = distance
                         visit.predecessor = explore
                         heapq.heappush(queue, (visit.distance+visit.heuristic,visit))

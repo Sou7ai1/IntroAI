@@ -5,7 +5,9 @@ Implement monotone heuristics for the A* algorithm running on subgraphs of the f
 * GridDiagonal2D: The two-dimensional grid that includes diagonals (including {(0,0), (1,1)} and {(0,1), (1,0)})
 * GridAllDiagonal3D: The three-dimensional grid containing both face and space diagonals (including, for example, {(0,0,0), (1,1,0)} and {(0,0,0), (1,1,1)})
 * GridFaceDiagonal3D: The three-dimensional grid containing face diagonals but not space ones (for example, it contains {(0,0,0), (1,1,0)} but does not contain {(0,0,0), (1,1,1)} )
-* GridKnight2D: Edges correspond exactly to the movement of the knight on the chessboard (for example, it contains {(0,0), (2,1)} and {(0,0), (-1,2)} but it does not include {(0,0), (1,0)})
+* GridRook2D: Edges correspond exactly to the movement of the rook on the chessboard where the movement distance is limited to 8 cells (for example, it contains {(0,0), (0,8)} and {(0,0), (-8,0)} but it does not include {(0,0), (9,0)})
+* GridQueen2D: Edges correspond exactly to the movement of the queen on the chessboard where the movement distance is limited to 8 cells in each coordinate (for example, it contains {(0,0), (8,8)} and {(0,0), (-5,4)} but it does not include {(0,0), (9,0)})
+* GridJumper2D: The movement are similar to the knight: it moves exactly 3 cells in one coordinate and 2 cells in the other one, so the graph is 8-regular (for example, it contains {(0,0), (2,-3)} and {(0,0), (3,-2)} but it does not include {(0,0), (1,0)}, {(0,0), (4,1)}, {(0,0), (2,2)})
 
 A subgraph is given by an oracle that decides whether an edge of the grid is presented or removed from the subgraph.
 

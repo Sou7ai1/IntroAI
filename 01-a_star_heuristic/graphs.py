@@ -1,4 +1,5 @@
 import sys
+import itertools
 
 class Grid:
     """ Interface of an abstract grid. """
@@ -12,7 +13,18 @@ class Grid:
 
         self.salt = salt * 6487304627
         self.probability = probability
-        self.directions = directions + list( tuple(-x for x in d) for d in directions )
+        self.directions = set()
+        for d in directions:
+            perm = list(set(itertools.permutations(d)))
+            for n in range(len(d)+1):
+                for c in itertools.combinations(range(len(d)), n):
+                    for p in perm:
+                        p = list(p)
+                        for i in c:
+                            p[i] = -p[i]                    
+                        self.directions.add(tuple(p))
+        self.directions = list(self.directions)
+#        print("Directions: ", self.directions)
 
     def oracle(self, u, v):
         """
@@ -39,24 +51,32 @@ class Grid:
 
 class Grid2D(Grid):
     def __init__(self, salt, probability):
-        super().__init__(salt, probability, [ (0,1), (1,0) ])
+        super().__init__(salt, probability, [ [0,1] ])
 
 class GridDiagonal2D(Grid):
     def __init__(self, salt, probability):
-        super().__init__(salt, probability, [ (0,1), (1,0), (1,1), (1,-1) ])
+        super().__init__(salt, probability, [ [0,1], [1,1] ])
 
-class GridKnight2D(Grid):
+class GridRook2D(Grid):
     def __init__(self, salt, probability):
-        super().__init__(salt, probability, [ (2,1), (1,2), (-2,1), (-1,2) ])
+        super().__init__(salt, probability, [ [0,i+1] for i in range(8) ])
+
+class GridQueen2D(Grid):
+    def __init__(self, salt, probability):
+        super().__init__(salt, probability, [ [i+1,j+1] for i in range(8) for j in range(8) ])        
+
+class GridJumper2D(Grid):
+    def __init__(self, salt, probability):
+        super().__init__(salt, probability, [ [2,3] ])
 
 class Grid3D(Grid):
     def __init__(self, salt, probability):
-        super().__init__(salt, probability, [ (0,0,1), (0,1,0), (1,0,0) ])
+        super().__init__(salt, probability, [ [0,0,1] ])
 
 class GridFaceDiagonal3D(Grid):
     def __init__(self, salt, probability):
-        super().__init__(salt, probability, [ (0,0,1), (0,1,0), (1,0,0), (0,1,1), (1,1,0), (1,0,1), (0,-1,1), (-1,1,0), (-1,0,1) ])
+        super().__init__(salt, probability, [ [0,0,1], [0,1,1] ])
 
 class GridAllDiagonal3D(Grid):
     def __init__(self, salt, probability):
-        super().__init__(salt, probability, [ (0,0,1), (0,1,0), (1,0,0), (0,1,1), (1,1,0), (1,0,1), (0,-1,1), (-1,1,0), (-1,0,1), (1,1,1), (1,1,-1), (1,-1,1), (-1,1,1) ])
+        super().__init__(salt, probability, [ [0,0,1], [0,1,1], [1,1,1] ])
