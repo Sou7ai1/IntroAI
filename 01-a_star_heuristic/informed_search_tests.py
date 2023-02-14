@@ -4,8 +4,8 @@ import sys
 from time import time
 from prettytable import PrettyTable
 
-from heuristics import grid_2D_heuristic, grid_diagonal_2D_heuristic, grid_3D_heuristic, grid_face_diagonal_3D_heuristic, grid_all_diagonal_3D_heuristic, grid_queen_2D_heuristic, grid_rook_2D_heuristic, grid_jumper_2D_heuristic
-from graphs import Grid2D, GridDiagonal2D, GridQueen2D, GridRook2D, GridJumper2D, Grid3D, GridFaceDiagonal3D, GridAllDiagonal3D
+from heuristics import grid_2D_heuristic, grid_diagonal_2D_heuristic, grid_3D_heuristic, grid_face_diagonal_3D_heuristic, grid_all_diagonal_3D_heuristic, grid_queen_2D_heuristic, grid_great_king_2D_heuristic, grid_rook_2D_heuristic, grid_jumper_2D_heuristic
+from graphs import Grid2D, GridDiagonal2D, GridQueen2D, GridGreatKing2D, GridRook2D, GridJumper2D, Grid3D, GridFaceDiagonal3D, GridAllDiagonal3D
 from informed_search import informed_search
 
 def informed_search_test(graph, heuristic, origin, destination, expected_distance):
@@ -25,7 +25,7 @@ def informed_search_test(graph, heuristic, origin, destination, expected_distanc
     if found_distance < expected_distance:
         # This case is expected not to happen. This most likely means incorrect setting of tests.
         return (False, "Your heuristic found a shorter path than the optimal which should be impossible")
-    print("Your heuristic found a path from", origin, "to", destination, "of length", expected_distance, "and visited", visited, "vertices")
+    print("Your heuristic found a path from", origin, "to", destination, "of length", found_distance, "and visited", visited, "vertices. Your heuristic estimates that the distance is", heuristic(origin, destination))
     return (status, msg)
 
 def informed_search_dataset(dataset):
@@ -51,13 +51,30 @@ def main():
         (GridDiagonal2D(93542,0.5), grid_diagonal_2D_heuristic, (-574,-641), (784,448), 1426),
         (GridDiagonal2D(565,1), grid_diagonal_2D_heuristic, (-76457,-36498), (47647,28745), 124104)
     ]
-    grid_queen_2D_tests = [
-        (GridQueen2D(42,0.9), grid_queen_2D_heuristic, (0,0), (3,3), 1),
-        (GridQueen2D(16424,0.8), grid_queen_2D_heuristic, (1,2), (21,26), 3),
-        (GridQueen2D(1234,0.7), grid_queen_2D_heuristic, (-5,3), (112,147), 18),
-        (GridQueen2D(45645,0.4), grid_queen_2D_heuristic, (-248,-398), (147,145), 68),
-        (GridQueen2D(565,1), grid_queen_2D_heuristic, (-6457,-6498), (7647,8745), 1906),
+    grid_queen_2D_tests_1 = [
+        (GridQueen2D(42,1.), grid_queen_2D_heuristic, (0,0), (3,3), 1),
+        (GridQueen2D(42,1.), grid_queen_2D_heuristic, (0,0), (3,4), 2),
+        (GridQueen2D(42,1.), grid_queen_2D_heuristic, (0,0), (9,0), 2),
+        (GridQueen2D(42,1.), grid_queen_2D_heuristic, (0,0), (9,2), 2),
+        (GridQueen2D(42,1.), grid_queen_2D_heuristic, (0,0), (1,10), 3),
+        (GridQueen2D(14357,0.8), grid_queen_2D_heuristic, (1,2), (21,26), 4),
+        (GridQueen2D(1532,0.7), grid_queen_2D_heuristic, (-5,3), (112,147), 19),
+        (GridQueen2D(475,0.4), grid_queen_2D_heuristic, (-248,-398), (147,145), 69),
+        (GridQueen2D(47455,1), grid_queen_2D_heuristic, (-1448,-1198), (1447,1245), 363),
     ]
+    grid_queen_2D_tests_2 = [
+        (GridQueen2D(44765,0.8), grid_queen_2D_heuristic, (-1876,-1398), (1648,1567), 441),
+        (GridQueen2D(25,1), grid_queen_2D_heuristic, (-3483,-2474), (3749,2489), 905),
+        (GridQueen2D(455,1), grid_queen_2D_heuristic, (-4457,-6498), (7647,1745), 1514),
+        
+    ]
+    grid_great_king_2D_tests = [
+        (GridGreatKing2D(42,0.9), grid_great_king_2D_heuristic, (0,0), (3,3), 1),
+        (GridGreatKing2D(16424,0.8), grid_great_king_2D_heuristic, (1,2), (21,26), 3),
+        (GridGreatKing2D(1234,0.7), grid_great_king_2D_heuristic, (-5,3), (112,147), 18),
+        (GridGreatKing2D(45645,0.4), grid_great_king_2D_heuristic, (-248,-398), (147,145), 68),
+        (GridGreatKing2D(565,1), grid_great_king_2D_heuristic, (-6457,-6498), (7647,8745), 1906),
+    ]    
     grid_rook_2D_tests = [
         (GridRook2D(42,0.9), grid_rook_2D_heuristic, (0,0), (3,3), 2),
         (GridRook2D(35435,0.8), grid_rook_2D_heuristic, (1,2), (11,36), 7),
@@ -110,10 +127,12 @@ def main():
             "GridDiagonal2D": (grid_diagonal_2D_tests, 1, 22),
             "GridAllDiagonal3D": (grid_all_diagonal_3D_tests, 1, 19),
             "GridFaceDiagonal3D": (grid_face_diagonal_3D_tests, 2, 13),
-            "GridQueen2D": (grid_queen_2D_tests, 1, 6),
+            "GridQueen2D-1": (grid_queen_2D_tests_1, 1, 6),
+            "GridQueen2D-2": (grid_queen_2D_tests_2, 1, 30),
+            "GridGreatKing2D": (grid_great_king_2D_tests, 1, 6),
             "GridRook2D": (grid_rook_2D_tests, 1, 7),
             "GridJumper2D-1": (grid_jumper_2D_tests_1, 1, 2),
-            "GridJumper2D-2": (grid_jumper_2D_tests_2, 1, 2)
+            "GridJumper2D-2": (grid_jumper_2D_tests_2, 2, 2)
     }
 
     if len(sys.argv) == 1:

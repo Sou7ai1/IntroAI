@@ -6,7 +6,8 @@ Implement monotone heuristics for the A* algorithm running on subgraphs of the f
 * GridAllDiagonal3D: The three-dimensional grid containing both face and space diagonals (including, for example, {(0,0,0), (1,1,0)} and {(0,0,0), (1,1,1)})
 * GridFaceDiagonal3D: The three-dimensional grid containing face diagonals but not space ones (for example, it contains {(0,0,0), (1,1,0)} but does not contain {(0,0,0), (1,1,1)} )
 * GridRook2D: Edges correspond exactly to the movement of the rook on the chessboard where the movement distance is limited to 8 cells (for example, it contains {(0,0), (0,8)} and {(0,0), (-8,0)} but it does not include {(0,0), (9,0)})
-* GridQueen2D: Edges correspond exactly to the movement of the queen on the chessboard where the movement distance is limited to 8 cells in each coordinate (for example, it contains {(0,0), (8,8)} and {(0,0), (-5,4)} but it does not include {(0,0), (9,0)})
+* GridQueen2D: Edges correspond exactly to the movement of the queen on the chessboard where the movement distance is limited to 8 cells in each coordinate (for example, it contains {(0,0), (8,8)} and {(0,0), (0,-4)} but it does not include {(0,0), (9,0)}, {(0,0), (-5,4)})
+* GridGreatKing2D: The Great King can move up to 8 cells in each coordinate (for example, the grid contains {(0,0), (8,8)} and {(0,0), (-5,4)} but it does not include {(0,0), (9,0)})
 * GridJumper2D: The movement are similar to the knight: it moves exactly 3 cells in one coordinate and 2 cells in the other one, so the graph is 8-regular (for example, it contains {(0,0), (2,-3)} and {(0,0), (3,-2)} but it does not include {(0,0), (1,0)}, {(0,0), (4,1)}, {(0,0), (2,2)})
 
 A subgraph is given by an oracle that decides whether an edge of the grid is presented or removed from the subgraph.
@@ -18,4 +19,4 @@ Recodex tests are the same as in the file informed_search_tests.py. The expected
 Hints:
 * Observation: If an integer is larger than 5.5, then it is at least 6.
 * The command "ulimit -v" may be useful to limit amount of memory the program can allocate to prevent swapping and other problems related to insufficient amount of memory.
-* The reference time provided by the script informed_search_tests.py is the running time on computer Intel(R) Core(TM) i5-7200U CPU @ 2.50GHz with 8 GB RAM. Time limit on Recodex is 60 seconds for each grid but its computer is a little bit slower.
+* The reference time provided by the script informed_search_tests.py is the running time on computer Intel(R) Core(TM) i5-7200U CPU @ 2.50GHz with 8 GB RAM. Time limit on Recodex is 60 seconds for each grid and its new computer is actually faster.

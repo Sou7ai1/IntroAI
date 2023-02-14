@@ -63,7 +63,11 @@ class GridRook2D(Grid):
 
 class GridQueen2D(Grid):
     def __init__(self, salt, probability):
-        super().__init__(salt, probability, [ [i+1,j+1] for i in range(8) for j in range(8) ])        
+        super().__init__(salt, probability, [ [i+1,(i+1)*j] for i in range(8) for j in range(2) ])        
+
+class GridGreatKing2D(Grid):
+    def __init__(self, salt, probability):
+        super().__init__(salt, probability, [ [i+1,j+1] for i in range(8) for j in range(8) ])  
 
 class GridJumper2D(Grid):
     def __init__(self, salt, probability):

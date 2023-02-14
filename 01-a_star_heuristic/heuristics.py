@@ -28,6 +28,9 @@ def grid_all_diagonal_3D_heuristic(current, destination):
 def grid_queen_2D_heuristic(current, destination):
     return 0
 
+def grid_great_king_2D_heuristic(current, destination):
+    return 0
+
 def grid_rook_2D_heuristic(current, destination):
     return 0
 
