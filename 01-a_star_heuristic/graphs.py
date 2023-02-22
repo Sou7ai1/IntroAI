@@ -13,6 +13,7 @@ class Grid:
 
         self.salt = salt * 6487304627
         self.probability = probability
+        self.dimension = len(directions[0])
         self.directions = set()
         for d in directions:
             perm = list(set(itertools.permutations(d)))
