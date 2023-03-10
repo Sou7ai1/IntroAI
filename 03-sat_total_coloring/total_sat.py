@@ -1,6 +1,5 @@
 # Install package python-sat !!!
 from pysat.solvers import Glucose3
-import pycosat
 
 def total_coloring(graph):
     """

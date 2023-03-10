@@ -5,3 +5,8 @@ Total coloring (see e.g. https://en.wikipedia.org/wiki/Total_coloring) of a grap
 The total chromatic number of a graph is the minimum number of colors required for total coloring of the graph. Write a program which finds the total chromatic number using the Satisfiability of boolean formulas (SAT). Implement function total_coloring in the file total_sat.py and upload only this file to ReCodex.
 
 This task can be solved using many methods (e.g. CSP, Linear Programming and backtracking), but the goal of this assignment is to practice using SAT solvers on a simple problem. Therefore, you are expected to use the library **python-sat** (https://pypi.org/project/python-sat/). A graph is given using the library networkx (https://pypi.org/project/networkx/), so a part of the assignment is reading the documentation of mentioned libraries.
+
+Remark:
+There are other SAT solvers; e.g. [pycosat](https://github.com/conda/pycosat).
+You can try them and let me [know](https://gitlab.mff.cuni.cz/finkj1am/introai/-/issues/2) which is easier to install and use.
+Currently, only python-sat is installed on recodex, but we may change if students agree so.
