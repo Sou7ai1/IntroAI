@@ -1,5 +1,7 @@
+#!/usr/bin/env python3
+
 import sys
-import numpy
+import numpy as np
 from minesweeper_common import UNKNOWN, MINE, get_neighbors
 from minesweeper_player import Player
 
@@ -28,97 +30,121 @@ def evaluate(mine_prb, board, correct_probabilities):
 
 def main():
     tests = {
-        "first": (.2,
-numpy.array([
-[1,       UNKNOWN, UNKNOWN],
-[UNKNOWN, UNKNOWN, UNKNOWN]
-]),
-numpy.array([
-[0,   1/3, .2],
-[1/3, 1/3, .2]
-])),
-        "second": (.7,
-numpy.array([
-[2,       UNKNOWN, UNKNOWN],
-[UNKNOWN, UNKNOWN, UNKNOWN]
-]),
-numpy.array([
-[0,   2/3, .7],
-[2/3, 2/3, .7]
-])),
-        "third": (.2,
-numpy.array([
-[1, UNKNOWN, UNKNOWN],
-[1, UNKNOWN, UNKNOWN]
-]),
-numpy.array([
-[0, .5, .2],
-[0, .5, .2]
-])),
-        "fourth": (.3,
-numpy.array([
-[1, UNKNOWN, UNKNOWN],
-[1, UNKNOWN, UNKNOWN],
-[1, UNKNOWN, UNKNOWN]
-]),
-numpy.array([
-[0, 0, .3],
-[0, 1, .3],
-[0, 0, .3]
-])),
-        "fifth": (.4,
-numpy.array([
-[1, UNKNOWN, UNKNOWN],
-[2, UNKNOWN, UNKNOWN],
-[1, UNKNOWN, UNKNOWN]
-]),
-numpy.array([
-[0, 1, .4],
-[0, 0, .4],
-[0, 1, .4]
-])),
-        "sixth": (.15,
-numpy.array([
-[1,    UNKNOWN, UNKNOWN],
-[2,    UNKNOWN, UNKNOWN],
-[MINE,       2,       1]
-]),
-numpy.array([
-[0, .15, .15],
-[0, .85, .15],
-[1,   0,   0]
-])),
-        "seventh": (.2,
-numpy.array([
-[0, 1, UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN],
-[0, 1, UNKNOWN,       3, UNKNOWN, UNKNOWN, UNKNOWN],
-[0, 1,       1,       3, UNKNOWN, UNKNOWN, UNKNOWN],
-[0, 1, UNKNOWN,       3, UNKNOWN, UNKNOWN, UNKNOWN],
-[0, 1, UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN]
-]),
-numpy.array([
-[0., 0., .5, .3, .3, .2, .2],
-[0., 0., .5, 0., .6, .2, .2],
-[0., 0., 0., 0., .8, .2, .2],
-[0., 0., .5, 0., .6, .2, .2],
-[0., 0., .5, .3, .3, .2, .2]
-])),
-        "eighth": (.22,
-numpy.array([
-[      0,       2,    MINE,       3, UNKNOWN,       2, UNKNOWN],
-[      0,       3, UNKNOWN,       5, UNKNOWN, UNKNOWN, UNKNOWN],
-[      1,       3, UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN],
-[UNKNOWN, UNKNOWN,       4, UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN],
-[UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN]
-]),
-numpy.array([
-[0.,         0.,         1.,         0.,         0.5,        0.,   1/3],
-[0.,         0.,         1.,         0.,         0.5,        1/3,  1/3],
-[0.,         0.,         1.,         0.73898942, 0.26101058, 0.22, 0.22],
-[0.26101058, 0.73898942, 0.,         0.38050529, 0.22,       0.22, 0.22],
-[0.22,       0.38050529, 0.38050529, 0.38050529, 0.22,       0.22, 0.22]
-])),
-}
+        "first": (
+            0.2,
+            np.array([
+                [1, UNKNOWN, UNKNOWN],
+                [UNKNOWN, UNKNOWN, UNKNOWN]
+            ]),
+            np.array([
+                [0, 1 / 3, 0.2],
+                [1 / 3, 1 / 3, 0.2]
+            ]),
+        ),
+        "second": (
+            0.7,
+            np.array([
+                [2, UNKNOWN, UNKNOWN],
+                [UNKNOWN, UNKNOWN, UNKNOWN]
+            ]),
+            np.array([
+                [0, 2 / 3, 0.7],
+                [2 / 3, 2 / 3, 0.7]
+            ]),
+        ),
+        "third": (
+            0.2,
+            np.array([
+                [1, UNKNOWN, UNKNOWN],
+                [1, UNKNOWN, UNKNOWN]
+            ]),
+            np.array([
+                [0, 0.5, 0.2],
+                [0, 0.5, 0.2]
+            ]),
+        ),
+        "fourth": (
+            0.3,
+            np.array(
+                [[1, UNKNOWN, UNKNOWN],
+                [1, UNKNOWN, UNKNOWN],
+                [1, UNKNOWN, UNKNOWN]]
+            ),
+            np.array([
+                [0, 0, 0.3],
+                [0, 1, 0.3],
+                [0, 0, 0.3]
+            ]),
+        ),
+        "fifth": (
+            0.4,
+            np.array(
+                [[1, UNKNOWN, UNKNOWN],
+                [2, UNKNOWN, UNKNOWN],
+                [1, UNKNOWN, UNKNOWN]]
+            ),
+            np.array([
+                [0, 1, 0.4],
+                [0, 0, 0.4],
+                [0, 1, 0.4]
+            ]),
+        ),
+        "sixth": (
+            0.15,
+            np.array([
+                [1, UNKNOWN, UNKNOWN],
+                [2, UNKNOWN, UNKNOWN],
+                [MINE, 2, 1]
+            ]),
+            np.array([
+                [0, 0.15, 0.15],
+                [0, 0.85, 0.15],
+                [1, 0, 0]
+            ]),
+        ),
+        "seventh": (
+            0.2,
+            np.array(
+                [
+                    [0, 1, UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN],
+                    [0, 1, UNKNOWN, 3, UNKNOWN, UNKNOWN, UNKNOWN],
+                    [0, 1, 1, 3, UNKNOWN, UNKNOWN, UNKNOWN],
+                    [0, 1, UNKNOWN, 3, UNKNOWN, UNKNOWN, UNKNOWN],
+                    [0, 1, UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN],
+                ]
+            ),
+            np.array(
+                [
+                    [0.0, 0.0, 0.5, 0.3, 0.3, 0.2, 0.2],
+                    [0.0, 0.0, 0.5, 0.0, 0.6, 0.2, 0.2],
+                    [0.0, 0.0, 0.0, 0.0, 0.8, 0.2, 0.2],
+                    [0.0, 0.0, 0.5, 0.0, 0.6, 0.2, 0.2],
+                    [0.0, 0.0, 0.5, 0.3, 0.3, 0.2, 0.2],
+                ]
+            ),
+        ),
+        "eighth": (
+            0.22,
+            np.array(
+                [
+                    [0, 2, MINE, 3, UNKNOWN, 2, UNKNOWN],
+                    [0, 3, UNKNOWN, 5, UNKNOWN, UNKNOWN, UNKNOWN],
+                    [1, 3, UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN],
+                    [UNKNOWN, UNKNOWN, 4, UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN],
+                    [UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN],
+                ]
+            ),
+            np.array(
+                [
+                    [0.0, 0.0, 1.0, 0.0, 0.5, 0.0, 1 / 3],
+                    [0.0, 0.0, 1.0, 0.0, 0.5, 1 / 3, 1 / 3],
+                    [0.0, 0.0, 1.0, 0.73898942, 0.26101058, 0.22, 0.22],
+                    [0.26101058, 0.73898942, 0.0, 0.38050529, 0.22, 0.22, 0.22],
+                    [0.22, 0.38050529, 0.38050529, 0.38050529, 0.22, 0.22, 0.22],
+                ]
+            ),
+        ),
+    }
 
     if len(sys.argv) == 1:
         success = True
