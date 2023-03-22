@@ -15,7 +15,8 @@ Please note that there are many variants of PDDL and you are expected to use the
 Examples of acceptable domain definition files are available at (https://github.com/aibasel/pyperplan/tree/master/benchmarks).
 
 There are many resources about PDDL on the Internet (see below), but be aware that not all versions of PDDL are accepted by our testing script.
-Note that the used PDDL solver does not accept negative preconditions. Furthermore, no *require* command is needed to solve this task.
+Note that the used PDDL solver does not accept negative preconditions.
+Furthermore, only basic knowledge of PDDL is needed to solve this assignment, so it is not necessary to study object typing and the *require* command.
 * http://users.cecs.anu.edu.au/~patrik/pddlman/writing.html
 * https://github.com/pellierd/pddl4j/wiki/Logistics:-a-simple-running-example
 * https://cw.fel.cvut.cz/old/_media/courses/ae3b33kui/lectures/lecture_09_10.pdf
