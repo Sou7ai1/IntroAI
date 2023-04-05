@@ -33,6 +33,9 @@ However, you are expected to explain your approach, so write comments in your co
 Teachers will reduce the number of points for unclear code.
 
 Hints:
+* Do not take the Bellman equation from the lecture literally.
+It has many variants and the task of this assignment is to modify it appropriately for the given problem.
+
 * The energy matrix also determines the coordination system.
 Therefore, going south increases the row index, and going east increases the column index.
 Note that the robot cannot move outside the matrix since any attempt to reach the first or the last row or column fails and only consume energy.
