@@ -16,7 +16,6 @@ Tasks: Your output should be a PDF file explaining the settings of your decision
 
 - Visualize the decision tree obtained from the best combination of features you discovered. [1 points]
 
-Upload both PDF and python source code to recodex.
-The best combination of features is expected to be used in the python source code for training, testing and to visualize the decision tree.
-
-You will get 1 temporary point upon submission of two files (one syntactically correct PDF and one Python script) and proper points will be assigned later.
+Upload only your report in PDF format to recodex.
+You will get 1 temporary point upon submission one syntactically correct PDF and proper points will be assigned later.
+No source code is required for the evaluation so do not try to submit your source codes by recodex, email, pigeon post, etc.
