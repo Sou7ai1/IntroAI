@@ -1,4 +1,8 @@
+#!/usr/bin/env python3
+
 import sys
+sys.path.append("..")
+import check_versions
 import numpy
 from numpy import array
 from robot_test import Environment

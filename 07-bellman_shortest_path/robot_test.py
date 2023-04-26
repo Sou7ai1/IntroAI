@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 import sys
+sys.path.append("..")
+import check_versions
 import numpy
 import copy
 from prettytable import PrettyTable
