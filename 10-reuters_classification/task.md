@@ -24,6 +24,10 @@ During the preparation of the data and creation of the network, we made many dec
 4. We showed that the accuracy and loss behave differently for the training and validation sets. Why is that? What does it tell you about the number of epochs? Try to use a different number of epochs. [2 points]
 5. Combining the previous parts, describe a model of a network that performed the best. [2 points] 
 
+Upload only your report in PDF format to recodex.
+You will get 1 temporary point upon submission one syntactically correct PDF and proper points will be assigned later.
+No source code is required for the evaluation so do not try to submit your source codes by recodex, email, pigeon post, etc.
+
 ### Presentation of your results
 
 Important part of the report is to represent your results in a meaningful way. The suggested way is to use the function from task 1. and report the accuracy of the network on testing data as a function of the parameter you changed (number of layers, number of neurons, etc.). You can plot this function as a graph or show the numbers in a table. Remember to discuss the trend and try to provide a reasoning for what you observed.
