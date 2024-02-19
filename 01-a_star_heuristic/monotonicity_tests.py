@@ -1,6 +1,6 @@
 import sys
-from heuristics import grid_2D_heuristic, grid_diagonal_2D_heuristic, grid_3D_heuristic, grid_face_diagonal_3D_heuristic, grid_all_diagonal_3D_heuristic, grid_queen_2D_heuristic, grid_great_king_2D_heuristic, grid_rook_2D_heuristic, grid_jumper_2D_heuristic
-from graphs import Grid2D, GridDiagonal2D, GridQueen2D, GridGreatKing2D, GridRook2D, GridJumper2D, Grid3D, GridFaceDiagonal3D, GridAllDiagonal3D
+from heuristics import grid_2D_heuristic, grid_diagonal_2D_heuristic, grid_3D_heuristic, grid_face_diagonal_3D_heuristic, grid_all_diagonal_3D_heuristic, grid_great_king_2D_heuristic, grid_rook_2D_heuristic, grid_jumper_2D_heuristic
+from graphs import Grid2D, GridDiagonal2D, GridGreatKing2D, GridRook2D, GridJumper2D, Grid3D, GridFaceDiagonal3D, GridAllDiagonal3D
 
 def evaluate(graph, size, heuristic):
     """
@@ -41,13 +41,13 @@ def evaluate(graph, size, heuristic):
                         "and heuristic from", neighbour, "to", destination, "is", heuristic_neighbour,
                         "which fails the monotonic property since the distance between", origin, "and", neighbour, "is 1.")
                         return False
+    print("Passed.")
     return True
 
 def main():
     tests = {
         "Grid2D": (Grid2D(1,1.), 100, grid_2D_heuristic),
         "GridDiagonal2D": (GridDiagonal2D(1,1.), 100, grid_diagonal_2D_heuristic),
-        "GridQueen2D": (GridQueen2D(1,1.), 100, grid_queen_2D_heuristic),
         "GridGreatKing2D": (GridGreatKing2D(1,1.), 50, grid_great_king_2D_heuristic),
         "GridRook2D": (GridRook2D(1,1.), 100, grid_rook_2D_heuristic),
         "GridJumper2D": (GridJumper2D(1,1.), 100, grid_jumper_2D_heuristic),
@@ -57,12 +57,13 @@ def main():
 }
 
     if len(sys.argv) == 1:
-        success = True
+        failed = []
         for name in tests:
             print("Running test", name)
-            success = evaluate(*tests[name]) and success
+            if not evaluate(*tests[name]):
+                failed.append(name)
             print()
-        print("All tests passed." if success else "Some tests failed.")
+        print("All heuristics are monotonic." if not failed else "The following heuristics are not monotonic: {}.".format(failed))
     else:
         name = sys.argv[1]
         if name in tests:
@@ -72,10 +73,10 @@ def main():
 
 """
 To run all tests, run the command
-$ python3 probability_test.py
+$ python3 monotonicity_tests.py
 
 To run a test NAME, run the command
-$ python3 probability_test.py NAME
+$ python3 monotonicity_tests.py NAME
 """
 if __name__ == "__main__":
     main()

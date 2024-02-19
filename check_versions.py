@@ -5,7 +5,7 @@
 
 import sys
 
-if sys.version_info.major != 3 or sys.version_info.minor != 9:
+if sys.version_info.major != 3 or sys.version_info.minor != 11:
     print("Python version 3.9 is required for testing since it is installed on ReCodEx. You are using Python version", sys.version)
     sys.exit()
 

@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 
 import sys
-from time import time
+sys.path.append("..")
+import check_versions
 from prettytable import PrettyTable
+from time import time
 
-from heuristics import grid_2D_heuristic, grid_diagonal_2D_heuristic, grid_3D_heuristic, grid_face_diagonal_3D_heuristic, grid_all_diagonal_3D_heuristic, grid_queen_2D_heuristic, grid_great_king_2D_heuristic, grid_rook_2D_heuristic, grid_jumper_2D_heuristic
-from graphs import Grid2D, GridDiagonal2D, GridQueen2D, GridGreatKing2D, GridRook2D, GridJumper2D, Grid3D, GridFaceDiagonal3D, GridAllDiagonal3D
+from heuristics import grid_2D_heuristic, grid_diagonal_2D_heuristic, grid_3D_heuristic, grid_face_diagonal_3D_heuristic, grid_all_diagonal_3D_heuristic, grid_great_king_2D_heuristic, grid_rook_2D_heuristic, grid_jumper_2D_heuristic
+from graphs import Grid2D, GridDiagonal2D, GridGreatKing2D, GridRook2D, GridJumper2D, Grid3D, GridFaceDiagonal3D, GridAllDiagonal3D
 from informed_search import informed_search
 
 def informed_search_test(graph, heuristic, origin, destination, expected_distance):
@@ -50,27 +52,6 @@ def main():
         (GridDiagonal2D(1234,0.7), grid_diagonal_2D_heuristic, (-5,3), (112,147), 166),
         (GridDiagonal2D(93542,0.5), grid_diagonal_2D_heuristic, (-574,-641), (784,448), 1426),
         (GridDiagonal2D(565,1), grid_diagonal_2D_heuristic, (-76457,-36498), (47647,28745), 124104)
-    ]
-    grid_queen_2D_tests_1 = [
-        (GridQueen2D(42,1.), grid_queen_2D_heuristic, (0,0), (3,3), 1),
-        (GridQueen2D(42,1.), grid_queen_2D_heuristic, (0,0), (3,4), 2),
-        (GridQueen2D(42,1.), grid_queen_2D_heuristic, (0,0), (9,0), 2),
-        (GridQueen2D(42,1.), grid_queen_2D_heuristic, (0,0), (9,2), 2),
-        (GridQueen2D(42,1.), grid_queen_2D_heuristic, (0,0), (1,10), 3),
-        (GridQueen2D(42,1.), grid_queen_2D_heuristic, (0,0), (15,-1), 2),
-        (GridQueen2D(42,1.), grid_queen_2D_heuristic, (0,0), (23,1), 3),
-        (GridQueen2D(14357,0.8), grid_queen_2D_heuristic, (1,2), (21,26), 4),
-        (GridQueen2D(1532,0.7), grid_queen_2D_heuristic, (-5,3), (112,147), 19),
-        (GridQueen2D(475,0.4), grid_queen_2D_heuristic, (-248,-398), (147,145), 69),
-        (GridQueen2D(47455,1), grid_queen_2D_heuristic, (-1448,-1198), (1447,1245), 363),
-    ]
-    grid_queen_2D_tests_2 = [
-        (GridQueen2D(42,1.), grid_queen_2D_heuristic, (0,0), (15,1), 2),
-        (GridQueen2D(42,1.), grid_queen_2D_heuristic, (0,0), (-20,-3), 3),
-        (GridQueen2D(44765,0.8), grid_queen_2D_heuristic, (-1876,-1398), (1648,1567), 441),
-        (GridQueen2D(25,1), grid_queen_2D_heuristic, (-3483,-2474), (3749,2489), 905),
-        (GridQueen2D(455,1), grid_queen_2D_heuristic, (-4457,-6498), (7647,1745), 1514),
-        
     ]
     grid_great_king_2D_tests = [
         (GridGreatKing2D(42,0.9), grid_great_king_2D_heuristic, (0,0), (3,3), 1),
@@ -126,21 +107,19 @@ def main():
     ]
 
     tests = {
-            "Grid2D": (grid_2D_tests, 1, 14),
-            "Grid3D": (grid_3D_tests, 1, 15),
-            "GridDiagonal2D": (grid_diagonal_2D_tests, 1, 22),
-            "GridAllDiagonal3D": (grid_all_diagonal_3D_tests, 1, 19),
-            "GridFaceDiagonal3D": (grid_face_diagonal_3D_tests, 2, 13),
-            "GridQueen2D-1": (grid_queen_2D_tests_1, 1, 3),
-            "GridQueen2D-2": (grid_queen_2D_tests_2, 1, 12),
-            "GridGreatKing2D": (grid_great_king_2D_tests, 1, 6),
-            "GridRook2D": (grid_rook_2D_tests, 1, 7),
-            "GridJumper2D-1": (grid_jumper_2D_tests_1, 1, 2),
-            "GridJumper2D-2": (grid_jumper_2D_tests_2, 2, 2)
+            "Grid2D": (grid_2D_tests, 1, 60),
+            "Grid3D": (grid_3D_tests, 1, 60),
+            "GridDiagonal2D": (grid_diagonal_2D_tests, 1, 60),
+            "GridAllDiagonal3D": (grid_all_diagonal_3D_tests, 1, 60),
+            "GridFaceDiagonal3D": (grid_face_diagonal_3D_tests, 2, 60),
+            "GridGreatKing2D": (grid_great_king_2D_tests, 2, 60),
+            "GridRook2D": (grid_rook_2D_tests, 2, 60),
+            "GridJumper2D-1": (grid_jumper_2D_tests_1, 1, 60),
+            "GridJumper2D-2": (grid_jumper_2D_tests_2, 2, 60)
     }
 
     if len(sys.argv) == 1:
-        results = PrettyTable(["Test name", "Points", "Reference time [s]", "Your time [s]", "Evaluation"])
+        results = PrettyTable(["Test name", "Points", "Your time [s]", "Time limit on recodex [s]", "Evaluation"])
         for name in tests:
             print("Running test", name)
             dataset, points, time_limit = tests[name]
@@ -149,7 +128,7 @@ def main():
             running_time = time() - start_time
             print(msg)
             print()
-            results.add_row([name, points, time_limit, running_time, msg])
+            results.add_row([name, points, running_time, time_limit, msg])
         print(results)
     else:
         name = sys.argv[1]
