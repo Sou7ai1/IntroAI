@@ -40,4 +40,4 @@ Homework for the course Introduction to Artificial Intelligence
 
 ## Erratas
 
-No one is perfect and teachers also make mistakes. If you find a simple mistake which you can easily correct (including grammatical errors), please create a [merge request][https://docs.gitlab.com/ee/user/project/merge_requests/]. If you cannot fix it, write [me][https://ktiml.mff.cuni.cz/~fink/] an email or create an [issue][https://docs.gitlab.com/ee/user/project/issues/] on gitlab.
+No one is perfect and teachers also make mistakes. If you find a simple mistake which you can easily correct (including grammatical errors), please create a [merge request](https://docs.gitlab.com/ee/user/project/merge_requests/). If you cannot fix it, write [me](https://ktiml.mff.cuni.cz/~fink/) an email or create an [issue](https://docs.gitlab.com/ee/user/project/issues/) on gitlab.
