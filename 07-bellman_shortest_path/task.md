@@ -36,8 +36,6 @@ It has many variants and the task of this assignment is to modify it appropriate
 
 * The energy matrix also determines the coordination system.
 Therefore, going south increases the row index, and going east increases the column index.
-Note that the robot cannot move outside the matrix since any attempt to reach the first or the last row or column fails and only consume energy.
-See the function single_landing for more details.
 
 * The shape of the Ring of Saturn is a torus.
 So, going north from first row, the robot reaches the last row.
