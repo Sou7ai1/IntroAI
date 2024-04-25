@@ -21,4 +21,4 @@ Hints:
 * Observation: If an integer is larger than 5.5, then it is at least 6.
 * The command "ulimit -v" may be useful to limit amount of memory the program can allocate to prevent swapping and other problems related to insufficient amount of memory.
 
-![evaluation](reference_evaluation_on_recodex.png "Evaluation of a reference solution on recodex")
+

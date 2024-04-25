@@ -58,4 +58,3 @@ To make the computation faster, implement the policy update.
 * Python package scipy may be useful to solve the task.
 Especially, [a sparse matrix](https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csc_matrix.html) and [a linear system solver](https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.linalg.spsolve.html) may be handy.
 
-![evaluation](reference_evaluation_on_recodex.png "Evaluation of a reference solution on recodex")

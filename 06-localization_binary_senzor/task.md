@@ -65,4 +65,3 @@ Remaining points are considered as challenge for students who see many opportuni
 There are many ways how to use this distribution to control the robot. 
 The lecture provides a very simple strategy, and you can improve it using your creativity. Good luck.
 
-![evaluation](reference_evaluation_on_recodex.png "Evaluation of a reference solution on recodex")

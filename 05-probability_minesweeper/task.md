@@ -8,4 +8,3 @@ File probability_test.py contains tests to verify the correctness of calculating
 
 Time limit for each test is one minute on recodex. 
 
-![evaluation](reference_evaluation_on_recodex.png "Evaluation of a reference solution on recodex")
