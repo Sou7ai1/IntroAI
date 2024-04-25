@@ -45,6 +45,6 @@ Each project is accompanied by a `task.md` file, which provides a detailed descr
 Clone the repository and install required Python libraries:
 
 ```bash
-git clone https://github.com/Sou7ai1/IntroAImff.git
+git clone https://github.com/Sou7ai1/IntroAI.git
 cd IntroAImff
 pip install -r requirements.txt
