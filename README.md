@@ -1,43 +1,50 @@
-# IntroAI
+# AI Projects - MFF Charles University Exchange
 
-Homework for the course Introduction to Artificial Intelligence
+This repository hosts a series of advanced Artificial Intelligence projects developed during my academic exchange at the Mathematics and Physics Faculty of Charles University. These projects cover a broad spectrum of AI techniques and applications.
 
-## Requirements:
+## Project Descriptions
 
-* You can obtain at least 10 points for each assignment
-* The threshold for passing is 7×number of assignments
-* Deadline: usually 2 weeks (except state holidays, the 1st assignment, etc.)
-* Submit on [recodex](https://recodex.mff.cuni.cz)
+Each project is accompanied by a `task.md` file, which provides a detailed description of the project's objectives and requirements.
 
-## Programming assignments:
+### Heuristic Implementations for Grid Navigation
 
-* You are given a partial implementation of an AI task on [git](https://gitlab.mff.cuni.cz/finkj1am/introai)
-* Implement the missing bits
-* Automatic checking, tests are public (the same as on Recodex)
-* Instructor looks at the source code and evaluate its source codes
-* Programming language: Python
+- **Files**: `heuristics.py`, `graphs.py`, `task.md`
+- **Description**: Implementations of various heuristic functions to estimate distances in grid-based problems, facilitating pathfinding algorithms for grids with different properties:
+  - **2D Grids**: Manhattan and Chebyshev distances.
+  - **3D Grids**: Euclidean-like measures and composite heuristics for more complex 3D environments.
+  - **Special Grids**: Adaptations for grids mimicking movements of chess pieces like the rook and the knight.
 
-## Experimental assignments:
+### Minesweeper AI Strategy
 
-* Measure properties of a given implementation
-* Write a report (and submit PDF)
+- **Files**: `minesweeper_ai.py`, `task.md`
+- **Description**: Development of an AI strategy for playing Minesweeper that uses probability calculations and safe exploration strategies to efficiently clear mines without detonating them.
 
-## General rules
+### Robot Control Simulation
 
-* Feel free to talk about assignments with other people, but do not share code nor reports (except with the instructor).
-* Deadlines are strict.
-* Before deadline, you can re-submit.
-* The number of points depends on tests you pass.
-* Quality of your code and reports contributes to grading.
-* Your program must work on every input. Although tests are available, it is forbidden to precompute any results for these tests.
-* You can use only [the standard library](https://docs.python.org/3/library/) and libraries listed in [requirements.txt](https://gitlab.mff.cuni.cz/finkj1am/introai/-/blob/master/requirements.txt).
-* Do not use code you didn't write yourself.
-* Cite all sources you used to fulfill given tasks. Missing citations and plagiarism will be reported to [Disciplinary Board](https://www.mff.cuni.cz/en/faculty/organizational-structure/department?code=4).
+- **Files**: `robot_control.py`, `task.md`
+- **Description**: Implementation of a control system for a robot navigating a grayscale environment, with strategies based on sensor readings and probabilistic movement outcomes.
 
-## Literature
+### Graph Coloring and Constraint Solving
 
-* Artificial Intelligence: A Modern Approach, 4th Edition (Prentice Hall, 2020). Available in our library at Malá Strana.
+- **Files**: `graph_coloring.py`, `constraint.py`, `task.md`
+- **Description**: Application of constraint programming and SAT solving techniques for graph coloring. This project involves:
+  - **Total Coloring**: Finding total chromatic index and coloring for a graph using a constraint satisfaction problem solver.
+  - **Using PySAT**: Implementing SAT solver strategies to determine minimal colorings and validate chromatic properties.
+  - **Transport Domain**: Strategies and actions defined for manipulating transport scenarios within a specified domain, highlighting automated planning.
 
-## Erratas
+## Technologies Used
 
-No one is perfect and teachers also make mistakes. If you find a simple mistake which you can easily correct (including grammatical errors), please create a [merge request](https://docs.gitlab.com/ee/user/project/merge_requests/). If you cannot fix it, write [me](https://ktiml.mff.cuni.cz/~fink/) an email or create an [issue](https://docs.gitlab.com/ee/user/project/issues/) on gitlab.
+- Python
+- SciPy and NumPy for numerical operations
+- NetworkX for graph-based data structures
+- PySAT for Boolean satisfiability problems
+- Constraint Programming for solving complex coloring problems
+
+## Installation
+
+Clone the repository and install required Python libraries:
+
+```bash
+git clone https://github.com/Sou7ai1/IntroAImff.git
+cd IntroAImff
+pip install -r requirements.txt
