@@ -1,52 +1,49 @@
-import numpy, scipy, networkx # You can use everything from these libraries if you find them useful.
-import scipy.sparse as sparse # Calling scipy.sparse.csc_matrix does not work on Recodex, so call sparse.csc_matrix(...) instead
-import scipy.sparse.linalg as linalg # Also, call linalg.spsolve
-
-"""
-    TODO: Improve the strategy controlling the robot.
-    A recommended approach is implementing the function RobotControl.precompute_probability_policy.
-    You can adopt this file as you like but you have to keep the interface so that your player properly works on recodex; i.e.
-        * RobotControl.__init__ is called in for every environment (test).
-        * RobotControl.get_command is called to obtain command for movement on a given position.
-    Furthermore, get_distance and get_policy is used by tests in the file probability_test.py.
-"""
+import numpy as np
+import math
+from heapq import heappush, heappop
 
 class RobotControl:
     def __init__(self, environment):
         self.env = environment
-        self.distance,self.policy = self.precompute_probability_policy()
+        self.distance, self.policy = self.precompute_probability_policy()
 
-    # Returns a matrix of maximal probabilities of reaching the station from every cell
     def get_distance(self):
         return self.distance
 
-    # Returns a matrix of commands for every cell
     def get_policy(self):
         return self.policy
 
-    # Returns command for movement from the current position.
-    # This function is called quite a lot of times, so it is recommended to avoid any heavy computation here.
     def get_command(self, current):
         return self.policy[tuple(current)]
 
-    # Place all your precomputation here.
+    def euclidean_heuristic(self, pos, destination):
+        return math.sqrt((pos[0] - destination[0])**2 + (pos[1] - destination[1])**2)
+
     def precompute_probability_policy(self):
-        return self.precompute_probability_policy_trivial()
+        rows, cols = self.env.rows, self.env.columns
+        policy = np.full((rows, cols), -1, dtype=int)
+        distance = np.full((rows, cols), np.inf)
+        destination = tuple(self.env.destination)
+        heuristic_weight = 1.1
 
-    # Returns a trivial control strategy which just heads directly toward the station ignoring all dangers and movement imperfectness
-    def precompute_probability_policy_trivial(self):
-        env = self.env
-        distance = numpy.zeros((env.rows, env.columns)) # No probability is computed
-        policy = numpy.zeros((env.rows, env.columns), dtype=int)
-        for i in range(env.rows):
-            for j in range(env.columns):
-                if i > env.destination[0]:
-                    policy[i,j] = env.NORTH
-                elif i < env.destination[0]:
-                    policy[i,j] = env.SOUTH
-                elif j < env.destination[1]:
-                    policy[i,j] = env.EAST
-                elif j > env.destination[1]:
-                    policy[i,j] = env.WEST
+        heap = []
+        start_cost = self.euclidean_heuristic(destination, destination)
+        heappush(heap, (start_cost, 0, destination))
+        distance[destination] = 0
+
+        while heap:
+            _, current_dist, current_pos = heappop(heap)
+            if current_dist > distance[current_pos]:
+                continue
+
+            for direction in range(4):
+                neighbor = self.env.get_position_in_direction(current_pos, direction)
+                if self.env.get_energy(neighbor) > 0:
+                    new_dist = current_dist + self.env.get_energy(neighbor)
+                    if new_dist < distance[neighbor]:
+                        distance[neighbor] = new_dist
+                        policy[neighbor] = (direction + 2) % 4
+                        estimated_cost = new_dist + heuristic_weight * self.euclidean_heuristic(neighbor, destination)
+                        heappush(heap, (estimated_cost, new_dist, neighbor))
+
         return distance, policy
-
